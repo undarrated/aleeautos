@@ -3,44 +3,44 @@ const mysql = require("mysql");
 const cors = require("cors");
 
 const app = express();
-app.use(cors()); // Allow requests from your frontend
-app.use(express.json());
+app.use(cors());
 
-// Connect to MySQL
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",  // Change if you set a different username
-  password: "",  // Enter your MySQL password
-  database: "car_dealership"
+    host: "localhost",
+    user: "root",  // Change this if your MySQL user is different
+    password: "",  // Add your MySQL password if set
+    database: "car_dealership"
 });
 
 db.connect(err => {
-  if (err) {
-    console.error("Database connection failed:", err);
-  } else {
-    console.log("Connected to MySQL database!");
-  }
+    if (err) {
+        console.error("Database connection failed:", err);
+        return;
+    }
+    console.log("Connected to database");
 });
 
-// API to get cars based on search
+// Search API
 app.get("/search", (req, res) => {
-  const { status, make, model_year } = req.query;
-  let query = "SELECT * FROM cars WHERE 1=1";
+    const { condition, make, model } = req.query;
+    
+    let sql = "SELECT * FROM cars WHERE 1=1"; // Base query
 
-  if (status && status !== "New/Used") query += ` AND status = '${status}'`;
-  if (make) query += ` AND make = '${make}'`;
-  if (model_year) query += ` AND model_year = ${model_year}`;
+    if (condition !== "New/Used") sql += ` AND condition = '${condition}'`;
+    if (make) sql += ` AND make = '${make}'`;
+    if (model) sql += ` AND model = '${model}'`;
 
-  db.query(query, (err, results) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.json(results);
-    }
-  });
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error("Error fetching cars:", err);
+            res.status(500).send("Server error");
+            return;
+        }
+        res.json(results);
+    });
 });
 
 // Start server
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+    console.log("Server is running on port 3000");
 });
