@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // If you're using the root user, replace with actual username
-  password: '', // If root has no password, leave empty
-  database: 'car_dealership' // Use your actual database name
+  host: 'localhost',          // MySQL server location
+  user: 'your_user',          // The user you created or 'root'
+  password: 'your_password',  // The password for the user
+  database: 'car_dealership'  // The name of your database
 });
 
 connection.connect((err) => {
