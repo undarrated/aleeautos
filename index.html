@@ -3,58 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Dealership</title>
+    <title>AleeAutos Car Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .search-form {
+            margin-bottom: 20px;
+        }
+        .result-item {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .result-item h3 {
+            margin: 0;
+        }
+        .result-item p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
 
-    <h2>Search for a Car</h2>
+    <h1>AleeAutos Car Search</h1>
+    
+    <!-- Search Form -->
+    <form id="searchForm" class="search-form">
+        <label for="condition">Condition:</label>
+        <select name="condition" id="condition">
+            <option value="New">New</option>
+            <option value="Used">Used</option>
+            <option value="New/Used">New/Used</option>
+        </select>
 
-    <select id="condition">
-        <option value="New/Used">New/Used</option>
-        <option value="New">New</option>
-        <option value="Used">Used</option>
-    </select>
+        <label for="make">Make:</label>
+        <select name="make" id="make">
+            <option value="Toyota">Toyota</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="BMW">BMW</option>
+        </select>
 
-    <select id="make">
-        <option value="">Select Make</option>
-        <option value="Toyota">Toyota</option>
-        <option value="BMW">BMW</option>
-        <option value="Mercedes">Mercedes</option>
-    </select>
+        <label for="model">Model Year:</label>
+        <select name="model" id="model">
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+        </select>
 
-    <select id="model">
-        <option value="">Select Model</option>
-        <option value="2023">2023</option>
-        <option value="2022">2022</option>
-        <option value="2021">2021</option>
-    </select>
+        <button type="submit">Search</button>
+    </form>
 
-    <button id="searchBtn">Search</button>
-
+    <!-- Results will appear here -->
     <div id="results"></div>
 
     <script>
-        document.getElementById("searchBtn").addEventListener("click", function() {
-            const condition = document.getElementById("condition").value;
-            const make = document.getElementById("make").value;
-            const model = document.getElementById("model").value;
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            fetch(`http://localhost:3000/search?condition=${condition}&make=${make}&model=${model}`)
+            // Get the form values
+            const condition = document.getElementById('condition').value;
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+
+            // Create the search query string
+            const searchParams = new URLSearchParams({
+                condition: condition,
+                make: make,
+                model: model
+            });
+
+            // Fetch the search results from the server
+            fetch(`/search?${searchParams.toString()}`)
                 .then(response => response.json())
                 .then(data => {
-                    const resultsDiv = document.getElementById("results");
-                    resultsDiv.innerHTML = ""; // Clear previous results
-                    
+                    const resultsDiv = document.getElementById('results');
+                    resultsDiv.innerHTML = ''; // Clear previous results
+
                     if (data.length === 0) {
-                        resultsDiv.innerHTML = "<p>No cars found.</p>";
+                        resultsDiv.innerHTML = '<p>No cars found matching your criteria.</p>';
                         return;
                     }
 
+                    // Display the results
                     data.forEach(car => {
-                        resultsDiv.innerHTML += `<p>${car.make} - ${car.model} (${car.condition})</p>`;
+                        const carDiv = document.createElement('div');
+                        carDiv.classList.add('result-item');
+                        carDiv.innerHTML = `
+                            <h3>${car.make} ${car.model} (${car.year})</h3>
+                            <p><strong>Condition:</strong> ${car.condition}</p>
+                            <p><strong>Price:</strong> $${car.price}</p>
+                            <p><strong>Description:</strong> ${car.description}</p>
+                        `;
+                        resultsDiv.appendChild(carDiv);
                     });
                 })
-                .catch(error => console.error("Error fetching data:", error));
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                    document.getElementById('results').innerHTML = '<p>There was an error retrieving the results. Please try again.</p>';
+                });
         });
     </script>
 
