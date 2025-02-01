@@ -1,50 +1,63 @@
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');  // Enable CORS to handle requests from a different domain if needed
+const express = require("express");
+const mysql = require("mysql");
+const cors = require("cors");
 
 const app = express();
-const port = 3000;
-
-// Enable CORS
 app.use(cors());
+app.use(express.json()); // Allow JSON data in requests
 
-// MySQL Database Connection
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',  // Assuming you're using the root user
-  password: 'your_password',  // Replace with your actual password
-  database: 'car_dealership'  // Your database name
+// Connect to MySQL
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "66025117_Ao1",
+    database: "aleeautos"
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Database connection failed:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
-});
-
-// Create the '/search' route to handle search queries
-app.get('/search', (req, res) => {
-  const { condition, make, model, year } = req.query;
-
-  let query = 'SELECT * FROM cars WHERE 1=1';
-  if (condition) query += ` AND condition = ${connection.escape(condition)}`;
-  if (make) query += ` AND make = ${connection.escape(make)}`;
-  if (model) query += ` AND model = ${connection.escape(model)}`;
-  if (year) query += ` AND year = ${connection.escape(year)}`;
-
-  connection.query(query, (err, results) => {
+db.connect(err => {
     if (err) {
-      console.error('Database query error:', err);
-      res.status(500).send('Database query error');
-      return;
+        console.error("Database connection failed: ", err);
+        return;
     }
-    res.json(results);  // Send the query results as JSON
-  });
+    console.log("Connected to MySQL database.");
+});
+
+// Get all cars or filter by search query
+app.get("/cars", (req, res) => {
+    let sql = "SELECT * FROM cars";
+    let params = [];
+
+    if (req.query.search) {
+        sql += " WHERE make LIKE ? OR model LIKE ?";
+        params = [`%${req.query.search}%`, `%${req.query.search}%`];
+    }
+
+    db.query(sql, params, (err, results) => {
+        if (err) {
+            console.error("Error fetching cars:", err);
+            res.status(500).json({ error: "Database error" });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Get a specific car by ID
+app.get("/cars/:id", (req, res) => {
+    const sql = "SELECT * FROM cars WHERE id = ?";
+    db.query(sql, [req.params.id], (err, results) => {
+        if (err) {
+            console.error("Error fetching car:", err);
+            res.status(500).json({ error: "Database error" });
+        } else if (results.length === 0) {
+            res.status(404).json({ error: "Car not found" });
+        } else {
+            res.json(results[0]);
+        }
+    });
 });
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
 });
