@@ -1,120 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Dealership Search</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    form {
-      margin-bottom: 20px;
-    }
-    input, select {
-      padding: 8px;
-      margin-right: 10px;
-    }
-    button {
-      padding: 8px 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    #results {
-      margin-top: 20px;
-    }
-    .car {
-      margin-bottom: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AleeAutos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #search { width: 100%; padding: 10px; margin-bottom: 20px; }
+        .car-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .car { border: 1px solid #ddd; padding: 10px; width: 250px; text-align: center; cursor: pointer; }
+        img { width: 100%; height: 150px; object-fit: cover; }
+    </style>
 </head>
 <body>
 
-  <h1>Car Dealership Search</h1>
+    <h1>AleeAutos - Car Dealership</h1>
+    <input type="text" id="search" placeholder="Search for a car...">
+    <div id="cars" class="car-container"></div>
 
-  <form id="searchForm">
-    <label for="condition">Condition:</label>
-    <select id="condition">
-      <option value="">All</option>
-      <option value="New">New</option>
-      <option value="Used">Used</option>
-    </select>
-
-    <label for="make">Make:</label>
-    <select id="make">
-      <option value="">All</option>
-      <option value="Toyota">Toyota</option>
-      <option value="BMW">BMW</option>
-      <option value="Mercedes-Benz">Mercedes-Benz</option>
-      <option value="Audi">Audi</option>
-    </select>
-
-    <label for="model">Model:</label>
-    <select id="model">
-      <option value="">All</option>
-      <option value="Camry">Camry</option>
-      <option value="X5">X5</option>
-      <option value="C-Class">C-Class</option>
-      <option value="A4">A4</option>
-    </select>
-
-    <label for="year">Year:</label>
-    <select id="year">
-      <option value="">All</option>
-      <option value="2022">2022</option>
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2019">2019</option>
-    </select>
-
-    <button type="submit">Search</button>
-  </form>
-
-  <div id="results"></div>
-
-  <script>
-    // Handle form submission
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      // Get search parameters
-      const condition = document.getElementById('condition').value;
-      const make = document.getElementById('make').value;
-      const model = document.getElementById('model').value;
-      const year = document.getElementById('year').value;
-
-      // Send request to the server
-      fetch(`/search?condition=${condition}&make=${make}&model=${model}&year=${year}`)
-        .then(response => response.json())
-        .then(data => {
-          const resultsDiv = document.getElementById('results');
-          resultsDiv.innerHTML = '';  // Clear previous results
-
-          if (data.length === 0) {
-            resultsDiv.innerHTML = 'No cars found';
-          } else {
-            data.forEach(car => {
-              const carDiv = document.createElement('div');
-              carDiv.classList.add('car');
-              carDiv.innerHTML = `
-                <strong>${car.make} ${car.model} - ${car.year}</strong><br>
-                Condition: ${car.condition}<br>
-                Price: $${car.price}<br>
-                Description: ${car.description}
-              `;
-              resultsDiv.appendChild(carDiv);
-            });
-          }
-        })
-        .catch(err => {
-          console.error('Error:', err);
-          alert('Error retrieving results');
-        });
-    });
-  </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
