@@ -29,3 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchCars(); // Load all cars on page load
 });
+
+const params = new URLSearchParams(window.location.search);
+const carId = params.get("car_id");
+
+if (!carId) {
+    console.error("Car ID is missing!");
+    document.getElementById("response-message").innerText = "Error: No car selected.";
+} else {
+    document.getElementById("car_id").value = carId; // Set the car ID in the form
+}
+
