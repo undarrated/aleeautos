@@ -84,3 +84,21 @@ app.post("/inquiries", (req, res) => {
     });
 });
 
+app.post("/inquiries", (req, res) => {
+    const { name, email, message, car_id } = req.body;
+
+    if (!name || !email || !message || !car_id) {
+        return res.status(400).json({ error: "All fields are required, including car ID." });
+    }
+
+    const sql = "INSERT INTO inquiries (name, email, message, car_id) VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, message, car_id], (err, result) => {
+        if (err) {
+            console.error("Error saving inquiry:", err);
+            res.status(500).json({ error: "Database error" });
+        } else {
+            res.json({ success: true, message: "Inquiry submitted successfully" });
+        }
+    });
+});
+
