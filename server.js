@@ -61,3 +61,26 @@ app.get("/cars/:id", (req, res) => {
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");
 });
+
+
+// Add this to server.js (below existing routes)
+
+// Handle inquiries submission
+app.post("/inquiries", (req, res) => {
+    const { name, email, message, car_id } = req.body;
+
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const sql = "INSERT INTO inquiries (name, email, message, car_id) VALUES (?, ?, ?, ?)";
+    db.query(sql, [name, email, message, car_id], (err, result) => {
+        if (err) {
+            console.error("Error saving inquiry:", err);
+            res.status(500).json({ error: "Database error" });
+        } else {
+            res.json({ success: true, message: "Inquiry submitted successfully" });
+        }
+    });
+});
+
