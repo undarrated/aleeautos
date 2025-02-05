@@ -55,8 +55,8 @@
         justify-content: space-evenly;
         
     }
-    #car img{
-        max-width: 100%;
+    .img{
+        max-width: 50px;
         height: auto;
     }
     
@@ -98,6 +98,7 @@
     }
     .car-container.active {
         display: flex;
+
     }
     .car-card {
         display: inline-block;
