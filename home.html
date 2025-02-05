@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <h1>ALEEAUTOS</h1>
+        </div>
+        <div class="dropdown">
+            <a href="./nav.html">
+                <div id="nav">
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                </div>
+            </a>
+        </div>
+        <div class="dropdown-desk">
+            <div class="color-brown">Home</div>
+            <div>Hausa</div>
+            <div>Yoruba</div>
+            <div>Igbo</div>
+        </div>
+    </header>
+
+    <section class="one">
+        <div><img src="./img/carbbg.png" alt=""></div>
+        <h1 style="font-size: 35px; margin: 0;">Find Your Dream</h1>
+        <div style="display: flex; justify-content: space-between; width: 55%; margin: auto;">
+            <div><h1 style="color: #A2001D; font-size: 60px; margin: 0;">Car</h1></div>
+            <p style="color: white; background-color: black; padding: 10px; border-radius: 20px;">Order Now ></p>
+        </div>
+        <div>
+            <input type="text" name="Search" id="search" placeholder="Search for any car here..."><i class="fa-solid fa-magnifying-glass" style="color: white; background-color: #A2001D; font-size: 20px; padding: 20px;"></i>
+        </div>
+    </section>
+
+    <section class="two">
+        <div class="cars">
+            <div id="car">
+                <div class="img"><img src="./img/benz.png" alt=""></div>
+                <div class="img"><img src="./img/bmw.png" alt=""></div>
+                <div class="img"><img src="./img/toyota.png" alt=""></div>
+                <div class="img"><img src="./img/honds.png" alt=""></div>
+                <div class="img"><img src="./img/audi.png" alt=""></div>
+                <div class="img"><img src="./img/ferrari.png" alt=""></div>
+                <div class="img"><img src="./img/tesla.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="third">
+        <div class="explore-buttons">
+            <button onclick="showCars('cars')">Cars/Minivans</button>
+            <button onclick="showCars('trucks')">Trucks</button>
+            <button onclick="showCars('suvs')">SUVs</button>
+        </div>
+    
+        <div id="cars" class="car-container active">
+            <div class="car-card"><img src="./img/car.png" alt="Car 1"><p>Car Model 1</p></div>
+            <div class="car-card"><img src="./img/car.png" alt="Car 2"><p>Car Model 2</p></div>
+            <div class="car-card"><img src="./img/car.png" alt="Car 3"><p>Car Model 3</p></div>
+            <div class="car-card"><img src="./img/car.png" alt="Car 3"><p>Car Model 3</p></div>
+            <div class="car-card"><img src="./img/car.png" alt="Car 3"><p>Car Model 3</p></div>
+            <!-- Add more cars here -->
+        </div>
+    
+        <div id="trucks" class="car-container">
+            <div class="car-card"><img src="truck1.jpg" alt="Truck 1"><p>Truck Model 1</p></div>
+            <div class="car-card"><img src="truck2.jpg" alt="Truck 2"><p>Truck Model 2</p></div>
+            <div class="car-card"><img src="truck3.jpg" alt="Truck 3"><p>Truck Model 3</p></div>
+            <!-- Add more trucks here -->
+        </div>
+    
+        <div id="suvs" class="car-container">
+            <div class="car-card"><img src="suv1.jpg" alt="SUV 1"><p>SUV Model 1</p></div>
+            <div class="car-card"><img src="suv2.jpg" alt="SUV 2"><p>SUV Model 2</p></div>
+            <div class="car-card"><img src="suv3.jpg" alt="SUV 3"><p>SUV Model 3</p></div>
+            <!-- Add more SUVs here -->
+        </div>
+    </section>
+
+
+    <script>
+        function showCars(category) {
+            // Hide all car sections
+            document.querySelectorAll('.car-container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Show the selected category
+            document.getElementById(category).classList.add('active');
+        }
+    </script>
+</body>
+</html>

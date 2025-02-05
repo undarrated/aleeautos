@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@media screen and (max-width: 786px) {
+    header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .dropdown{
+        padding: 10px;
+        margin-right: 15px;
+        
+    }
+    .navi{
+      padding: 2px;
+      background-color: black;
+      border: none;
+      margin-bottom: -5px;
+      width: 30px;
+    }
+    
+    .dropdown-desk{
+        display: none;
+    }
+
+    .one{
+        font-family: "Inter", sans-serif;
+        text-align: center;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+    #search{
+        margin-top: 10px;
+        width: 60%;
+        padding: 10px;
+    }
+    .two{
+        padding-top: 20px;
+    }
+    .brands{
+        color: rgb(104, 104, 104);
+        text-align: center;
+    }
+    .cars{
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+    #car{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        
+    }
+    #car img{
+        max-width: 100%;
+        height: auto;
+    }
+    .img{
+        max-width: 100%;
+        height: auto;
+        margin: 15px;
+    }
+
+    .thrid{
+        background-color: #EAEBF0;
+        padding: 10px;
+    }
+
+
+    .explore-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;     
+        width: 60%;    
+        background-color: aqua; 
+        margin: auto;              
+    }
+    .explore-buttons button {
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        color: #666872;
+        border-radius: 5px;
+        font-size: large;
+    }
+    .explore-buttons button:hover {
+        background-color: #A2001D;
+        color: white;
+    }
+    .car-container {
+        display: none;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        max-width: 100%;
+    }
+    .car-container.active {
+        display: flex;
+    }
+    .car-card {
+        display: inline-block;
+        width: 100px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        background: #f9f9f9;
+    }
+    .car-card img {
+        max-width: 100%;
+        height: auto;
+        
+    }
+}
