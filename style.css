@@ -125,4 +125,12 @@
         border-radius: 10px;
         text-align: center;
     }
+    #customer-review{
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        max-width: 100%;
+    }
 }
