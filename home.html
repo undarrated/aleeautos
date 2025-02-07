@@ -37,7 +37,10 @@
             <p style="color: white; background-color: black; padding: 10px; border-radius: 20px;">Order Now ></p>
         </div>
         <div>
-            <input type="text" name="Search" id="search" placeholder="Search for any car here..."><i class="fa-solid fa-magnifying-glass" style="color: white; background-color: #A2001D; font-size: 20px; padding: 20px;"></i>
+            <input type="text" id="search" placeholder="Search for a car...">
+            <div id="cars" class="car-container"></div>
+            <i class="fa-solid fa-magnifying-glass" style="color: white; background-color: #A2001D; font-size: 20px; padding: 20px;"></i>
+
         </div>
     </section>
 
@@ -178,13 +181,102 @@
         <h2 style="text-align: center;">Blogs</h2>
         <div style="width: 80%; margin: auto; text-align: start; background-color: white; padding: 10px;">
             <img src="./img/readmore.png" alt="">
-            <h3><b>EVS For Everyone</b></h3>
-            <p>At Aleeautos car dealership we provide many of the best servises for you and you will get the best benefits here</p>
+            <p>Is the 2024 Porsche Cayenne S a Good SUV? 4 Pros and 3 Cons</p>
         </div>
     </section>
 
 
+    <footer style="padding: 20px;">
+        <h3><b>Buying & Selling</b></h3>
+        <p>Find A Car</p>
+        <p>Sell Your Car</p>
+        
+        <h3><b>Resources</b></h3>
+        <p>Blog</p>
+        <p>Guides</p>
+
+        <h3><b>About</b></h3>
+        <p>Company</p>
+        <p>Contact</p>
+    </footer>
+
+
     <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search");
+    const carsContainer = document.getElementById("cars");
+
+    function fetchCars(query = "") {
+        fetch(`http://localhost:3000/cars?search=${query}`)
+            .then(response => response.json())
+            .then(cars => {
+                carsContainer.innerHTML = ""; // Clear previous results
+                cars.forEach(car => {
+                    const carElement = document.createElement("div");
+                    carElement.className = "car";
+                    carElement.innerHTML = `
+                        <img src="${car.image_url}" alt="${car.make} ${car.model}">
+                        <h3>${car.make} ${car.model} (${car.year})</h3>
+                        <p>Condition: ${car.car_condition}</p>
+                        <p>Price: $${car.price}</p>
+                    `;
+                    carElement.onclick = () => window.location.href = `car.html?id=${car.id}`;
+                    carsContainer.appendChild(carElement);
+                });
+            })
+            .catch(error => console.error("Error fetching cars:", error));
+    }
+
+    searchInput.addEventListener("input", () => {
+        fetchCars(searchInput.value);
+    });
+
+    fetchCars(); // Load all cars on page load
+});
+
+const params = new URLSearchParams(window.location.search);
+const carId = params.get("car_id");
+
+if (!carId) {
+    console.error("Car ID is missing!");
+    document.getElementById("response-message").innerText = "Error: No car selected.";
+} else {
+    document.getElementById("car_id").value = carId; // Set the car ID in the form
+}
+
+
+
+
+
+
+
+
+
+
+        
+    function filterCars() {
+        let searchInput = document.getElementById("search").value.toLowerCase();
+        let cars = document.querySelectorAll(".car");
+
+        cars.forEach(car => {
+            let make = car.getAttribute("data-make").toLowerCase();
+            let condition = car.getAttribute("data-condition").toLowerCase();
+            let year = car.getAttribute("data-year").toLowerCase();
+
+            if (make.includes(searchInput) || condition.includes(searchInput) || year.includes(searchInput)) {
+                car.style.display = "block";
+            } else {
+                car.style.display = "none";
+            }
+        });
+    }
+
+
+
+
+
+
         function showCars(category) {
             // Hide all car sections
             document.querySelectorAll('.car-container').forEach(container => {
