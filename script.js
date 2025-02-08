@@ -1,23 +1,3 @@
-// Import Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyA_FAJySouf9bfws2yuqFrD2ibFaWIeMEs",
-  authDomain: "aleeautos-ad65a.firebaseapp.com",
-  databaseURL: "https://aleeautos-ad65a-default-rtdb.firebaseio.com",
-  projectId: "aleeautos-ad65a",
-  storageBucket: "aleeautos-ad65a.appspot.com",
-  messagingSenderId: "953793922856",
-  appId: "1:953793922856:web:e2c61b44489855b7b9f21d",
-  measurementId: "G-JW2P5LX0B8"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
 document.addEventListener("DOMContentLoaded", function () {
     const typeSelect = document.getElementById("typeSelect");
     const makeSelect = document.getElementById("makeSelect");
@@ -27,20 +7,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let carData = [];
 
+    // Disable search button until data loads
+    searchButton.disabled = true;
+
+    // Fetch car data from Firebase
     async function fetchCarData() {
-        const carsRef = ref(db, "cars");
+        const carsRef = ref(db, "cars"); // Reference to the "cars" node in Firebase
         const snapshot = await get(carsRef);
 
         if (snapshot.exists()) {
             carData = Object.entries(snapshot.val()).map(([id, car]) => ({ id, ...car }));
             populateMakes();
+            searchButton.disabled = false; // Enable search button after loading data
         } else {
             console.log("No car data found.");
         }
     }
 
+    // Populate make options based on car data
     function populateMakes() {
-        const makes = [...new Set(carData.map(car => car.make))];
+        const selectedType = typeSelect.value;
+
+        // Filter cars based on the selected type (if not "New/Used")
+        const filteredCars = carData.filter(car => 
+            !selectedType || selectedType === "New/Used" || car.type === selectedType
+        );
+
+        const makes = [...new Set(filteredCars.map(car => car.make))];
+
         makeSelect.innerHTML = '<option value="">Select Make</option>';
         makes.forEach(make => {
             const option = document.createElement("option");
@@ -48,8 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
             option.textContent = make;
             makeSelect.appendChild(option);
         });
+
+        // Reset models dropdown
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
     }
 
+    // Populate model options based on the selected make
     function populateModels() {
         const selectedMake = makeSelect.value;
         modelSelect.innerHTML = '<option value="">Select Model</option>';
@@ -64,59 +62,60 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Search and filter cars based on selected options
     function searchCars() {
         const selectedType = typeSelect.value;
         const selectedMake = makeSelect.value;
         const selectedModel = modelSelect.value;
 
-        let filteredCars = carData;
-
-        if (selectedType && selectedType !== "New/Used") {
-            filteredCars = filteredCars.filter(car => car.type === selectedType);
-        }
-        if (selectedMake) {
-            filteredCars = filteredCars.filter(car => car.make === selectedMake);
-        }
-        if (selectedModel) {
-            filteredCars = filteredCars.filter(car => car.model === selectedModel);
-        }
+        const filteredCars = carData.filter(car => {
+            return (!selectedType || selectedType === "New/Used" || car.type === selectedType) &&
+                   (!selectedMake || car.make === selectedMake) &&
+                   (!selectedModel || car.model === selectedModel);
+        });
 
         displayResults(filteredCars);
     }
 
+    // Display search results
     function displayResults(cars) {
         resultsContainer.innerHTML = "";
+
         if (cars.length === 0) {
             resultsContainer.innerHTML = "<p>No cars found.</p>";
-        } else {
-            cars.forEach(car => {
-                const carItem = document.createElement("div");
-                carItem.className = "car-item";
-
-                // Create a clickable link with image
-                const carLink = document.createElement("a");
-                carLink.href = `car-details.html?id=${car.id}`;
-                carLink.style.textDecoration = "none";
-                carLink.style.color = "black";
-
-                const carImage = document.createElement("img");
-                carImage.src = car.image;
-                carImage.style.width = "100px";
-                carImage.style.height = "auto";
-                carImage.style.display = "block";
-
-                const carText = document.createElement("span");
-                carText.textContent = `${car.type} ${car.make} ${car.model} (${car.year})`;
-
-                carLink.appendChild(carImage);
-                carLink.appendChild(carText);
-                carItem.appendChild(carLink);
-                resultsContainer.appendChild(carItem);
-            });
+            return;
         }
+
+        cars.forEach(car => {
+            const carItem = document.createElement("div");
+            carItem.className = "car-item";
+
+            // Create a clickable link with an image
+            const carLink = document.createElement("a");
+            carLink.href = `car-details.html?id=${car.id}`;
+            carLink.style.textDecoration = "none";
+            carLink.style.color = "black";
+
+            const carImage = document.createElement("img");
+            carImage.src = car.image ? car.image : "default-image.jpg"; // Placeholder image
+            carImage.style.width = "100px";
+            carImage.style.height = "auto";
+            carImage.style.display = "block";
+
+            const carText = document.createElement("span");
+            carText.textContent = `${car.type} ${car.make} ${car.model} (${car.year})`;
+
+            carLink.appendChild(carImage);
+            carLink.appendChild(carText);
+            carItem.appendChild(carLink);
+            resultsContainer.appendChild(carItem);
+        });
     }
 
+    // Fetch car data when page loads
     fetchCarData();
+
+    // Event listeners for dropdown changes and search button
     makeSelect.addEventListener("change", populateModels);
     searchButton.addEventListener("click", searchCars);
 });
