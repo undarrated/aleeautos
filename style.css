@@ -212,7 +212,6 @@ button:hover {
 .scrollable-container {
     overflow-x: auto;
     white-space: nowrap;
-    background-color: #FFFAF5;
     padding-bottom: 40px;
 
   }
