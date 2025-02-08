@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+</head>
+<body>
+    <h1 id="carTitle"></h1>
+    <img id="carImage" src="" alt="Car Image" width="300">
+    <p id="carInfo"></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const title = params.get("make") + " " + params.get("model");
+        document.getElementById("carTitle").textContent = title;
+        document.getElementById("carInfo").textContent = `Year: ${params.get("year")} - Type: ${params.get("type")}`;
+    </script>
+</body>
+</html>

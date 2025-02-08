@@ -4,7 +4,213 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AleeAutos</title>
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@media screen and (max-width: 786px) {
+    body{
+        margin: 0;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .dropdown{
+        padding: 10px;
+        margin-right: 15px;
+        
+    }
+    .navi{
+      padding: 2px;
+      background-color: black;
+      border: none;
+      margin-bottom: -5px;
+      width: 30px;
+    }
+    
+    .dropdown-desk{
+        display: none;
+    }
+
+    .one{
+        font-family: "Inter", sans-serif;
+        text-align: center;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+    #search{
+        margin-top: 10px;
+        width: 60%;
+        padding: 10px;
+    }
+    .two{
+        padding-top: 20px;
+    }
+    .brands{
+        color: rgb(104, 104, 104);
+        text-align: center;
+    }
+    .cars{
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+    #car{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        
+    }
+    .img{
+        max-width: 50px;
+        height: auto;
+        margin: 10px;
+    }
+    
+
+    .thrid{
+        background-color: #EAEBF0;
+        padding: 10px;
+    }
+
+
+    .explore-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;     
+        max-width: 90%;    
+        margin: auto;    
+        flex-wrap: wrap;          
+    }
+    .explore-buttons button {
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        color: #666872;
+        border-radius: 5px;
+        font-size: large;
+    }
+    .explore-buttons button:hover {
+        background-color: #A2001D;
+        color: white;
+    }
+    .car-container {
+        display: none; /* Hide all car sections by default */
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .car-container.active {
+        display: flex; /* Show the active section */
+    }
+    
+    
+    .car-card {
+        display: inline-block;
+        width: 100px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        background: #f9f9f9;
+    }
+    .car-card img {
+        max-width: 100%;
+        height: auto;
+        
+    }
+    .order{
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 5px;
+        width: 50%;
+        border-radius: 10px;
+        text-align: center;
+    }
+    #customer-review{
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        max-width: 100%;
+    }
+    #search { 
+        width: 80%; 
+        padding: 10px; 
+        margin-bottom: 20px; 
+    }
+    .car-container { 
+        display: flex; flex-wrap: wrap; gap: 20px;
+     }
+    .car { 
+        border: 1px solid #ddd; padding: 10px; width: 250px; text-align: center; cursor: pointer; 
+    }
+  
+
+/* Container */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+
+
+/* Search Box */
+.search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select, button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1f6690;
+}
+
+/* Results */
+.results-container {
+    margin-top: 20px;
+}
+
+.car-item {
+    background: #ecf0f1;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+        
+}
+    </style>
 </head>
 <body>
     <header>
@@ -39,8 +245,28 @@
             <p style="color: white; background-color: black; padding: 10px; border-radius: 20px;">Order Now ></p>
         </div>
         <div>
-            <input type="text" id="search" placeholder="Search for a car...">
-            <div id="cars" class="car-container"></div>
+            <div class="container">        
+                <div class="search-box">
+                    <select id="typeSelect">
+                        <option value="New/Used">New/Used</option>
+                        <option value="New">New</option>
+                        <option value="Used">Used</option>
+                    </select>
+        
+                    <select id="makeSelect">
+                        <option value="">Select Make</option>
+                    </select>
+        
+                    <select id="modelSelect">
+                        <option value="">Select Model</option>
+                    </select>
+        
+                    <button id="searchButton">Search</button>
+                </div>
+        
+                <div id="results" class="results-container"></div>
+            </div>
+
         </div>
     </section>
 
@@ -60,74 +286,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-    <section class="third">
-        <div class="explore-buttons">
-            <button onclick="showCars('cars')">Cars/Minivans</button>
-            <button onclick="showCars('trucks')">Trucks</button>
-            <button onclick="showCars('suvs')">SUVs</button>
-        </div>
-    
-        <div id="cars" class="car-container active">
-            <div style="margin: 10px;">
-                <div><img src="./img/car.png" alt=""></div>
-                <div style="font-family: monospace">
-                        <p style="margin: 0;"><span style="color: #666872;">Car:</span> Tesla</p>
-                        <div style="display: flex; justify-content: space-between; margin: 0;">
-                            <p><span style="color: #666872;">Condition:</span> Used</p>
-                            <p><span style="color: #666872;">Year:</span> 2018</p>
-                        </div>
-                        <p class="order">Order Now</p>
-                </div>
-            </div>
-
-            <div style="margin: 10px;">
-                <div><img src="./img/car.png" alt=""></div>
-                <div style="font-family: monospace">
-                        <p style="margin: 0;"><span style="color: #666872;">Car:</span> Tesla</p>
-                        <div style="display: flex; justify-content: space-between; margin: 0;">
-                            <p><span style="color: #666872;">Condition:</span> Used</p>
-                            <p><span style="color: #666872;">Year:</span> 2018</p>
-                        </div>
-                        <p class="order">Order Now</p>
-                </div>
-            </div>
-
-            <div style="margin: 10px;">
-                <div><img src="./img/car.png" alt=""></div>
-                <div style="font-family: monospace">
-                        <p style="margin: 0;"><span style="color: #666872;">Car:</span> Tesla</p>
-                        <div style="display: flex; justify-content: space-between; margin: 0;">
-                            <p><span style="color: #666872;">Condition:</span> Used</p>
-                            <p><span style="color: #666872;">Year:</span> 2018</p>
-                        </div>
-                        <p class="order">Order Now</p>
-                </div>
-            </div>
-        </div>
-    
-        <div id="trucks" class="car-container">
-            <div class="car-card"><img src="truck1.jpg" alt="Truck 1"><p>Truck Model 1</p></div>
-            <div class="car-card"><img src="truck2.jpg" alt="Truck 2"><p>Truck Model 2</p></div>
-            <div class="car-card"><img src="truck3.jpg" alt="Truck 3"><p>Truck Model 3</p></div>
-            <!-- Add more trucks here -->
-        </div>
-    
-        <div id="suvs" class="car-container">
-            <div class="car-card"><img src="suv1.jpg" alt="SUV 1"><p>SUV Model 1</p></div>
-            <div class="car-card"><img src="suv2.jpg" alt="SUV 2"><p>SUV Model 2</p></div>
-            <div class="car-card"><img src="suv3.jpg" alt="SUV 3"><p>SUV Model 3</p></div>
-            <!-- Add more SUVs here -->
-        </div>
-    </section>
-
-
 
     <section style="background-color: #EAEBF0; text-align: center;">
         <h2>Our Services</h2>
@@ -158,11 +316,6 @@
             <p class="order">Read more ></p>
         </div>
     </section>
-
-
-
-
-
 
 
     <section style="background-color: #F8F8F8;">
@@ -219,69 +372,145 @@
     </footer>
     
 
-
-
-
-
-
-
-
-
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("search");
-    const carsContainer = document.getElementById("cars");
-
-    function fetchCars(query = "") {
-        fetch(`http://localhost:3000/cars?search=${query}`)
-            .then(response => response.json())
-            .then(cars => {
-                carsContainer.innerHTML = ""; // Clear previous results
-                cars.forEach(car => {
-                    const carElement = document.createElement("div");
-                    carElement.className = "car";
-                    carElement.innerHTML = `
-                        <img src="${car.image_url}" alt="${car.make} ${car.model}">
-                        <h3>${car.make} ${car.model} (${car.year})</h3>
-                        <p>Condition: ${car.car_condition}</p>
-                        <p>Price: $${car.price}</p>
-                    `;
-                    carElement.onclick = () => window.location.href = `car.html?id=${car.id}`;
-                    carsContainer.appendChild(carElement);
-                });
-            })
-            .catch(error => console.error("Error fetching cars:", error));
-    }
-
-    searchInput.addEventListener("input", () => {
-        fetchCars(searchInput.value);
-    });
-
-    fetchCars(); // Load all cars on page load
-});
-
-const params = new URLSearchParams(window.location.search);
-const carId = params.get("car_id");
-
-if (!carId) {
-    console.error("Car ID is missing!");
-    document.getElementById("response-message").innerText = "Error: No car selected.";
-} else {
-    document.getElementById("car_id").value = carId; // Set the car ID in the form
-};
-
-function showCars(category) {
-            // Hide all car sections
-            document.querySelectorAll('.car-container').forEach(container => {
-                container.classList.remove('active');
-            });
-
-            // Show the selected category
-            document.getElementById(category).classList.add('active');
+        // Import Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+        
+        // Firebase config
+        const firebaseConfig = {
+          apiKey: "AIzaSyA_FAJySouf9bfws2yuqFrD2ibFaWIeMEs",
+          authDomain: "aleeautos-ad65a.firebaseapp.com",
+          databaseURL: "https://aleeautos-ad65a-default-rtdb.firebaseio.com",
+          projectId: "aleeautos-ad65a",
+          storageBucket: "aleeautos-ad65a.appspot.com",
+          messagingSenderId: "953793922856",
+          appId: "1:953793922856:web:e2c61b44489855b7b9f21d",
+          measurementId: "G-JW2P5LX0B8"
         };
-
-
-    </script>
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);  // Initialize the Firebase database
+        
+        console.log("Firebase initialized:", app);  // This will log the 'app' object
+        
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const typeSelect = document.getElementById("typeSelect");
+            const makeSelect = document.getElementById("makeSelect");
+            const modelSelect = document.getElementById("modelSelect");
+            const searchButton = document.getElementById("searchButton");
+            const resultsContainer = document.getElementById("results");
+        
+            let carData = [];
+        
+            // Disable search button until data loads
+            searchButton.disabled = true;
+        
+            async function fetchCarData() {
+                const carsRef = ref(db, "cars");
+                const snapshot = await get(carsRef);
+        
+                if (snapshot.exists()) {
+                    carData = Object.entries(snapshot.val()).map(([id, car]) => ({ id, ...car }));
+                    populateMakes();
+                    searchButton.disabled = false; // Enable search button after loading data
+                } else {
+                    console.log("No car data found.");
+                }
+            }
+        
+            function populateMakes() {
+                const selectedType = typeSelect.value;
+        
+                // Filter cars based on the selected type (if not "New/Used")
+                const filteredCars = carData.filter(car => 
+                    !selectedType || selectedType === "New/Used" || car.type === selectedType
+                );
+        
+                const makes = [...new Set(filteredCars.map(car => car.make))];
+        
+                makeSelect.innerHTML = '<option value="">Select Make</option>';
+                makes.forEach(make => {
+                    const option = document.createElement("option");
+                    option.value = make;
+                    option.textContent = make;
+                    makeSelect.appendChild(option);
+                });
+        
+                // Reset models dropdown
+                modelSelect.innerHTML = '<option value="">Select Model</option>';
+            }
+        
+            function populateModels() {
+                const selectedMake = makeSelect.value;
+                modelSelect.innerHTML = '<option value="">Select Model</option>';
+                if (selectedMake) {
+                    const models = [...new Set(carData.filter(car => car.make === selectedMake).map(car => car.model))];
+                    models.forEach(model => {
+                        const option = document.createElement("option");
+                        option.value = model;
+                        option.textContent = model;
+                        modelSelect.appendChild(option);
+                    });
+                }
+            }
+        
+            function searchCars() {
+                const selectedType = typeSelect.value;
+                const selectedMake = makeSelect.value;
+                const selectedModel = modelSelect.value;
+        
+                const filteredCars = carData.filter(car => {
+                    return (!selectedType || selectedType === "New/Used" || car.type === selectedType) &&
+                           (!selectedMake || car.make === selectedMake) &&
+                           (!selectedModel || car.model === selectedModel);
+                });
+        
+                displayResults(filteredCars);
+            }
+        
+            function displayResults(cars) {
+                resultsContainer.innerHTML = "";
+        
+                if (cars.length === 0) {
+                    resultsContainer.innerHTML = "<p>No cars found.</p>";
+                    return;
+                }
+        
+                cars.forEach(car => {
+                    const carItem = document.createElement("div");
+                    carItem.className = "car-item";
+        
+                    // Create a clickable link with an image
+                    const carLink = document.createElement("a");
+                    carLink.href = `car-details.html?id=${car.id}`;
+                    carLink.style.textDecoration = "none";
+                    carLink.style.color = "black";
+        
+                    const carImage = document.createElement("img");
+                    carImage.src = car.image ? car.image : "default-image.jpg"; // Placeholder image
+                    carImage.style.width = "100px";
+                    carImage.style.height = "auto";
+                    carImage.style.display = "block";
+        
+                    const carText = document.createElement("span");
+                    carText.textContent = `${car.type} ${car.make} ${car.model} (${car.year})`;
+        
+                    carLink.appendChild(carImage);
+                    carLink.appendChild(carText);
+                    carItem.appendChild(carLink);
+                    resultsContainer.appendChild(carItem);
+                });
+            }
+        
+            fetchCarData();
+            makeSelect.addEventListener("change", populateModels);
+            searchButton.addEventListener("click", searchCars);
+        });
+        </script>
+        
 
 </body>
 </html>

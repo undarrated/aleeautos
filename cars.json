@@ -1,0 +1,26 @@
+{
+    "cars": {
+      "car1": {
+        "type": "New",
+        "make": "Toyota",
+        "model": "Corolla",
+        "year": "2023",
+        "image": "https://your-image-link.com/toyota-corolla.jpg"
+      },
+      "car2": {
+        "type": "Used",
+        "make": "Toyota",
+        "model": "Camry",
+        "year": "2020",
+        "image": "https://your-image-link.com/toyota-camry.jpg"
+      },
+      "car3": {
+        "type": "New",
+        "make": "Honda",
+        "model": "Civic",
+        "year": "2022",
+        "image": "https://your-image-link.com/honda-civic.jpg"
+      }
+    }
+  }
+  
