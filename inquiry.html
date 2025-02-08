@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Inquiry</title>
+    <link rel="stylesheet" href="css/all.min.css">
 </head>
 <style>
     body{
@@ -32,6 +33,13 @@
       margin-bottom: -5px;
       width: 30px;
     }
+    .in{
+        padding: 10px;
+    }
+    .in:hover{
+        background-color: #A2001D;
+        color: white;
+    }
 </style>
 <body>
     <header>
@@ -56,19 +64,19 @@
 
     <!-- Inquiry Form -->
     <form id="inquiryForm">
-        <label for="name">Name:</label>
+        <label for="name"><i class="fa-solid fa-user"  style="color: #A2001D;"></i>&nbsp;Name:</label>
         <input type="text" id="name" required><br><br>
 
-        <label for="email">Email:</label>
+        <label for="email"><i class="fa-solid fa-envelope"  style="color: #A2001D;"></i>&nbsp;Email:</label>
         <input type="email" id="email" required><br><br>
 
-        <label for="phone">Phone Number:</label>
+        <label for="phone"><i class="fa-solid fa-phone"  style="color: #A2001D;"></i>&nbsp;Phone Number:</label>
         <input type="tel" id="phone" required><br><br>
 
-        <label for="message">Message:</label><br>
+        <label for="message"><i class="fa-solid fa-message" style="color: #A2001D;"></i>&nbsp;Message</label><br>
         <textarea id="message" rows="4" cols="50" required></textarea><br><br>
 
-        <button type="submit">Submit Inquiry</button>
+        <button type="submit" class="in">Submit Inquiry</button>
     </form>
 
     <div id="confirmation"></div>
