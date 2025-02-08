@@ -4,213 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AleeAutos</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
-@media screen and (max-width: 786px) {
-    body{
-        margin: 0;
-    }
-    header{
-        display: flex;
-        justify-content: space-between;
-    }
-    .dropdown{
-        padding: 10px;
-        margin-right: 15px;
-        
-    }
-    .navi{
-      padding: 2px;
-      background-color: black;
-      border: none;
-      margin-bottom: -5px;
-      width: 30px;
-    }
-    
-    .dropdown-desk{
-        display: none;
-    }
-
-    .one{
-        font-family: "Inter", sans-serif;
-        text-align: center;
-    }
-    img{
-        max-width: 100%;
-        height: auto;
-    }
-    #search{
-        margin-top: 10px;
-        width: 60%;
-        padding: 10px;
-    }
-    .two{
-        padding-top: 20px;
-    }
-    .brands{
-        color: rgb(104, 104, 104);
-        text-align: center;
-    }
-    .cars{
-        overflow-x: auto;
-        white-space: nowrap;
-        width: 100%;
-    }
-    #car{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        
-    }
-    .img{
-        max-width: 50px;
-        height: auto;
-        margin: 10px;
-    }
-    
-
-    .thrid{
-        background-color: #EAEBF0;
-        padding: 10px;
-    }
-
-
-    .explore-buttons {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 20px;     
-        max-width: 90%;    
-        margin: auto;    
-        flex-wrap: wrap;          
-    }
-    .explore-buttons button {
-        padding: 10px 15px;
-        border: none;
-        cursor: pointer;
-        color: #666872;
-        border-radius: 5px;
-        font-size: large;
-    }
-    .explore-buttons button:hover {
-        background-color: #A2001D;
-        color: white;
-    }
-    .car-container {
-        display: none; /* Hide all car sections by default */
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-    }
-    
-    .car-container.active {
-        display: flex; /* Show the active section */
-    }
-    
-    
-    .car-card {
-        display: inline-block;
-        width: 100px;
-        margin-right: 10px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        text-align: center;
-        background: #f9f9f9;
-    }
-    .car-card img {
-        max-width: 100%;
-        height: auto;
-        
-    }
-    .order{
-        background-color: black;
-        color: white;
-        margin: 0;
-        padding: 5px;
-        width: 50%;
-        border-radius: 10px;
-        text-align: center;
-    }
-    #customer-review{
-        overflow-x: auto;
-        white-space: nowrap;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        max-width: 100%;
-    }
-    #search { 
-        width: 80%; 
-        padding: 10px; 
-        margin-bottom: 20px; 
-    }
-    .car-container { 
-        display: flex; flex-wrap: wrap; gap: 20px;
-     }
-    .car { 
-        border: 1px solid #ddd; padding: 10px; width: 250px; text-align: center; cursor: pointer; 
-    }
-  
-
-/* Container */
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Headings */
-
-
-/* Search Box */
-.search-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-select, button {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-/* Button */
-button {
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #1f6690;
-}
-
-/* Results */
-.results-container {
-    margin-top: 20px;
-}
-
-.car-item {
-    background: #ecf0f1;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-        
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -284,29 +78,29 @@ button:hover {
         </div>
     </section>
 
-    <section style="background-color: #EAEBF0; text-align: center;">
+    <section style="background-color: #EAEBF0; text-align: center; padding: 20px;">
         <h2>Our Services</h2>
         <p>At Aleeautos car dealership we provide many  of the best servises for you and you will get the best benefits here </p>
 
-        <div style="width: 80%; background-color: white; margin: auto; padding: 20px; margin-bottom: 20px;">
+        <div style="width: 80%; background-color: white; margin: auto; padding: 20px; margin-bottom: 20px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
             <img src="./img/caricon.png" alt="">
             <h3><b>Top Buy & Sell Car</b></h3>
             <p>At Aleeautos car dealership we provide many of the best servises for you and you will get the best benefits here </p>
         </div>
 
-        <div style="width: 80%; background-color: white; margin: auto; padding: 20px;  margin-bottom: 20px;">
+        <div style="width: 80%; background-color: white; margin: auto; padding: 20px;  margin-bottom: 20px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
             <img src="./img/wallet.png" alt="">
             <h3><b>Easy Payment</b></h3>
             <p>At Aleeautos car dealership we provide many of the best servises for you and you will get the best benefits here </p>
         </div>
 
-        <div style="width: 80%; background-color: white; margin: auto; padding: 20px;  margin-bottom: 20px;">
+        <div style="width: 80%; background-color: white; margin: auto; padding: 20px;  margin-bottom: 20px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);" >
             <img src="./img/pocket.png" alt="">
             <h3><b>Easy To Use</b></h3>
             <p>At Aleeautos car dealership we provide many of the best servises for you and you will get the best benefits here </p>
         </div>
 
-        <div style="width: 80%; margin: auto; text-align: start; background-color: white; padding: 10px;">
+        <div style="width: 80%; margin: auto; text-align: start; background-color: white; padding: 10px; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);">
             <img src="./img/readmore.png" alt="">
             <h3><b>EVS For Everyone</b></h3>
             <p>At Aleeautos car dealership we provide many of the best servises for you and you will get the best benefits here</p>
@@ -315,27 +109,64 @@ button:hover {
     </section>
 
 
-    <section style="background-color: #F8F8F8;">
-        <h2 style="text-align: center;">Customer Feedback</h2>
-        <div id="customer-review">
-            <div style="display: inline-block;">
-                <div style="display: flex;">
-                    <div style="max-width: 300px; display: flex;">
-                        <div style="min-width: 10%; margin-top: 20px;"><img src="./img/line.png" alt=""></div>
-                        <div>
-                            <p><b>Alh Umar Sani</b></p>
-                            <p>Brought Benz CLA250</p>
-                            <p>The listing was hot (more than 170 bids). Everything worked well. We appreciated a simple process.Listing page, chat with a seller, the auction, escrow service – everything was great and we didn’t need anything on top.</p>
-                        </div>
+    <section id="second-section">
+        <div class="scrollable-container">
+            <div class="scrollable-content-one">
+              <div class="item">
+                <div style="max-width: 100px; color: white;">
+                    <img src="./img/line.png" alt="">ad
+                </div>
+                <div class="para">
+                    <h4 style="margin: 0;">Alhaji Umar Sani</h4>
+                    <h6 style="margin: 0;">Brought Mercedez Benz for 65M</h6>
+                    <p id="paragraph">The listing was hot (more than 170 bids). <br> 
+                        Everything worked well. We appreciated<br> a simple process.Listing page, 
+                        chat with <br>a seller, the auction, escrow service – <br>everything was great 
+                        and we didn’t <br> need anything on top.
+                    </p>
+                </div>
+                </div>
+
+                <div class="item">
+                <div style="max-width: 100px; color: white;">
+                    <img src="./img/line.png" alt="">ad
+                </div>
+                <div class="para">
+                    <h4 style="margin: 0;">Alhaji Umar Sani</h4>
+                    <h6 style="margin: 0;">Brought Mercedez Benz for 65M</h6>
+                    <p id="paragraph">The listing was hot (more than 170 bids). <br> 
+                        Everything worked well. We appreciated<br> a simple process.Listing page, 
+                        chat with <br>a seller, the auction, escrow service – <br>everything was great 
+                        and we didn’t <br> need anything on top.
+                    </p>
+                </div>
+                </div>
+
+                    <div class="item">
+                <div style="max-width: 100px; color: white;">
+                    <img src="./img/line.png" alt="">ad
+                </div>
+                <div class="para">
+                    <h4 style="margin: 0;">Alhaji Umar Sani</h4>
+                    <h6 style="margin: 0;">Brought Mercedez Benz for 65M</h6>
+                    <p id="paragraph">The listing was hot (more than 170 bids). <br> 
+                        Everything worked well. We appreciated<br> a simple process.Listing page, 
+                        chat with <br>a seller, the auction, escrow service – <br>everything was great 
+                        and we didn’t <br> need anything on top.
+                    </p>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <div class="scroll">
+                <div class="arrow-greater">
+                    <div class="white-great">
+                        <i class="fa-solid fa-less-than" style="font-size: 11px;"></i>
                     </div>
-        
-                    <div style="max-width: 200px; display: flex;">
-                        <div style="min-width: 10%; margin-top: 20px;"><img src="./img/line.png" alt=""></div>
-                        <div>
-                            <p><b>Alh Umar Sani</b></p>
-                            <p>Brought Benz CLA250</p>
-                            <p>The listing was hot (more than 170 bids). Everything worked well. We appreciated a simple process.Listing page, chat with a seller, the auction, escrow service – everything was great and we didn’t need anything on top.</p>
-                        </div>
+                    <div class="blue-great">
+                        <i class="fa-solid fa-greater-than" style="font-size: 11px;"></i>
                     </div>
                 </div>
             </div>
@@ -354,7 +185,7 @@ button:hover {
     </section>
 
 
-    <footer style="padding: 20px;">
+    <footer>
         <h3><b>Buying & Selling</b></h3>
         <p>Find A Car</p>
         <p>Sell Your Car</p>

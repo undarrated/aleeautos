@@ -21,6 +21,20 @@
         "year": "2022",
         "image": "https://your-image-link.com/honda-civic.jpg"
       }
+    },
+    "inquiries": {
+      "inquiry1": {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "phone": "123-456-7890",
+        "message": "I'm interested in the Toyota Corolla 2023, can you provide more details?"
+      },
+      "inquiry2": {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "phone": "987-654-3210",
+        "message": "I would like to inquire about the availability of the Honda Civic 2022."
+      }
     }
   }
   

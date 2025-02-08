@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Inquiry</title>
+</head>
+<body>
+    <h2>Car Inquiry</h2>
+
+    <!-- Inquiry Form -->
+    <form id="inquiryForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Submit Inquiry</button>
+    </form>
+
+    <div id="confirmation"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-database.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA0UJZmmr1PS1GFplicHUtoFpoq8phPyIY",
+            authDomain: "autos-ef3ff.firebaseapp.com",
+            databaseURL: "https://autos-ef3ff-default-rtdb.firebaseio.com",
+            projectId: "autos-ef3ff",
+            storageBucket: "autos-ef3ff.appspot.com",
+            messagingSenderId: "942648163682",
+            appId: "1:942648163682:web:df2437120a852b374a803b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Handle form submission
+        document.getElementById("inquiryForm").addEventListener("submit", async function(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const message = document.getElementById("message").value;
+
+            // Create an inquiry object
+            const inquiryData = {
+                name: name,
+                email: email,
+                phone: phone,
+                message: message,
+                timestamp: new Date().toISOString()  // Save the timestamp
+            };
+
+            // Push the inquiry to Firebase database
+            const inquiryRef = ref(db, "inquiries/" + new Date().getTime());  // Unique reference for each inquiry
+            await set(inquiryRef, inquiryData);
+
+            // Show confirmation to the user
+            document.getElementById("confirmation").innerHTML = "Your inquiry has been submitted successfully! We will contact you soon.";
+
+            // Clear form fields
+            document.getElementById("inquiryForm").reset();
+        });
+    </script>
+</body>
+</html>
