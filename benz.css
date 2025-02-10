@@ -87,7 +87,7 @@
 
     .round{
         background-image: url(./img/IMG_3704.JPG);
-        max-width: 400px;
+        max-width: 100%;
         height: 200px;
         display: flex;
         justify-content: center;
@@ -97,7 +97,7 @@
     }
     .round-one{
         background-image: url(./img/IMG_3705.JPG);
-        max-width: 400px;
+        max-width: 100%;
         height: 200px;
         display: flex;
         justify-content: center;
@@ -118,7 +118,7 @@
 
     .scrollable-container {
         overflow-x: auto;
-        white-space: nowrap;
+        white-space: normal;
         padding-bottom: 40px;
     
       }
@@ -128,9 +128,7 @@
       }
       
       .item {
-        max-width: 300px;
         padding: 10px;
-        background-color: white;
         margin: 10px 10px;
         overflow-wrap: break-word;
       }
@@ -138,5 +136,10 @@
         max-width:  100%;
         font-size: 0.8rem;
         overflow-wrap: break-word;
+      }
+
+      footer{
+        padding: 20px;
+        color: white;
       }
 }
