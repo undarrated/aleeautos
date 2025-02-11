@@ -36,4 +36,32 @@
         max-width: 100%;
         height: auto;
     }
+
+
+    .scrollable-container {
+        overflow-x: auto;
+        white-space: normal;
+        padding-bottom: 40px;
+    
+      }
+      .scrollable-content-one {
+        display: flex;
+        
+      }
+      
+      .item {
+        padding: 10px;
+        margin: 10px 10px;
+        overflow-wrap: break-word;
+      }
+      #paragraph{
+        max-width:  100%;
+        font-size: 0.8rem;
+        overflow-wrap: break-word;
+      }
+
+      footer{
+        padding: 20px;
+        color: white;
+      }
 }
