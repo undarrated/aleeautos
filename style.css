@@ -261,7 +261,7 @@ button:hover {
 
 .scrollable-container {
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: wrap;
     padding-bottom: 40px;
 
   }
@@ -272,18 +272,14 @@ button:hover {
   
   .item {
     display: flex;
-    max-width: 300px;
     padding: 10px;
     background-color: white;
     margin: 10px 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    overflow-wrap: break-word;
   }
-  #paragraph{
-    max-width:  100%;
-    font-size: 0.8rem;
-    overflow-wrap: break-word;
+  .para{
+    width: 300px;
   }
+  
 footer{
     color: white;
     padding: 30px;
