@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AleeAutos FAQs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .faq-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .faq-question {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            outline: none;
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+            font-size: 16px;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-container">
+        <h2>AleeAutos FAQs</h2>
+
+        <div class="faq-item">
+            <button class="faq-question">How do I buy a car from AleeAutos?</button>
+            <div class="faq-answer">
+                You can browse our inventory, contact us for details, and schedule a viewing. We also offer financing options for eligible buyers.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you offer brand-new and used cars?</button>
+            <div class="faq-answer">
+                Yes! We have a wide range of both **brand-new** and **pre-owned** vehicles at competitive prices.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Can I trade in my old car?</button>
+            <div class="faq-answer">
+                Absolutely! We offer car trade-in services to help you upgrade to a newer vehicle effortlessly.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Where is AleeAutos located?</button>
+            <div class="faq-answer">
+                We are located in **Garki 2, Automatic Carwash, Yahuza Suya Spot, Abuja**.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How does the affiliate marketing program work?</button>
+            <div class="faq-answer">
+                You can join our WhatsApp group for free. When you bring a potential buyer, you earn a percentage of the sale. We post available cars daily!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', function () {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
