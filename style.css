@@ -284,6 +284,9 @@ footer{
     color: white;
     padding: 30px;
 }
+a{
+    color: inherit;
+}
 
         
 }
