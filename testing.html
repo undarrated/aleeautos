@@ -1,97 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AleeAutos FAQs</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f8f9fa;
-        }
-        .faq-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            background: white;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .faq-question {
-            background: #007bff;
-            color: white;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 18px;
-            border: none;
-            width: 100%;
-            text-align: left;
-            outline: none;
-        }
-        .faq-answer {
-            display: none;
-            padding: 15px;
-            background: #fff;
-            border-top: 1px solid #ddd;
-            font-size: 16px;
-        }
-        .faq-item.active .faq-answer {
-            display: block;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        font-family: Arial, sans-serif;
+        color: #ffffff;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: black;
+      }
+      .logo {
+        padding: 20px;
+        text-align: center;
+      }
+      .hero {
+        width: 100%;
+      }
+      .hero img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .intro {
+        padding: 20px;
+        text-align: center;
+      }
+      .intro h1 {
+        color: #e30613;
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      .intro p {
+        color: #ccc;
+        font-size: 15px;
+      }
+      .car-section {
+        padding: 20px;
+        border-top: 1px solid #333;
+      }
+      .car {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+      .car img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+      .car h2 {
+        margin: 5px 0;
+        font-size: 20px;
+        color: #fff;
+      }
+      .price {
+        color: #e30613;
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .car p {
+        font-size: 14px;
+        color: #bbb;
+        text-align: center;
+        max-width: 90%;
+      }
+      .cta {
+        text-align: center;
+        margin: 30px 0;
+      }
+      .cta a {
+        background-color: #e30613;
+        color: #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .footer {
+        padding: 20px;
+        font-size: 13px;
+        text-align: center;
+        color: #666;
+        border-top: 1px solid #222;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="./img/ChatGPT Image Jun 19, 2025, 01_50_24 PM.png" alt="ALEEAUTOS Logo" width="400" />
+      </div>
 
-    <div class="faq-container">
-        <h2>AleeAutos FAQs</h2>
+      <!-- Hero Image -->
+      
 
-        <div class="faq-item">
-            <button class="faq-question">How do I buy a car from AleeAutos?</button>
-            <div class="faq-answer">
-                You can browse our inventory, contact us for details, and schedule a viewing. We also offer financing options for eligible buyers.
-            </div>
+      <!-- Intro -->
+      <div class="intro">
+        <h1>TOP 3 SUVS UNDER ₦70 MILLION</h1>
+        <p>
+          It’s a great time to upgrade. Enjoy ALEEAUTOS’ June sales featuring high-performance SUVs at unbeatable prices – delivered straight to your doorstep.
+        </p>
+      </div>
+
+      <!-- Car 1 -->
+      <div class="car-section">
+        <div class="car">
+          <img src="https://i.ibb.co/qxqLmNK/rx350.jpg" alt="RX350" />
+          <h2>Lexus RX350</h2>
+          <div class="price">₦60 MILLION</div>
+          <p>Smooth, stylish and solid – this SUV is perfect for Nigerian roads and long drives. Fully inspected and ready for delivery.</p>
         </div>
 
-        <div class="faq-item">
-            <button class="faq-question">Do you offer brand-new and used cars?</button>
-            <div class="faq-answer">
-                Yes! We have a wide range of both **brand-new** and **pre-owned** vehicles at competitive prices.
-            </div>
+        <!-- Car 2 -->
+        <div class="car">
+          <img src="https://i.ibb.co/qyg9TTT/benz2020.jpg" alt="2020 Benz" />
+          <h2>Mercedes-Benz 2020</h2>
+          <div class="price">₦180 MILLION</div>
+          <p>Luxury meets performance in this executive ride. Experience the next level in style and comfort.</p>
         </div>
 
-        <div class="faq-item">
-            <button class="faq-question">Can I trade in my old car?</button>
-            <div class="faq-answer">
-                Absolutely! We offer car trade-in services to help you upgrade to a newer vehicle effortlessly.
-            </div>
+        <!-- Car 3 -->
+        <div class="car">
+          <img src="https://i.ibb.co/0fX5kvY/c450.jpg" alt="C450 2016" />
+          <h2>Benz C450 (2016)</h2>
+          <div class="price">₦45 MILLION</div>
+          <p>A sport-luxury compact sedan built to thrill. Verified & registered. One of the best deals this season.</p>
         </div>
+      </div>
 
-        <div class="faq-item">
-            <button class="faq-question">Where is AleeAutos located?</button>
-            <div class="faq-answer">
-                We are located in **Garki 2, Automatic Carwash, Yahuza Suya Spot, Abuja**.
-            </div>
-        </div>
+      <!-- CTA -->
+      <div class="cta">
+        <a href="https://www.instagram.com/alee.autos/" target="_blank">Shop on Instagram</a>
+      </div>
 
-        <div class="faq-item">
-            <button class="faq-question">How does the affiliate marketing program work?</button>
-            <div class="faq-answer">
-                You can join our WhatsApp group for free. When you bring a potential buyer, you earn a percentage of the sale. We post available cars daily!
-            </div>
-        </div>
+      <!-- Footer -->
+      <div class="footer">
+        Aleeautos, Garki II, Abuja<br />
+        We Buy, Sell & Deliver Nationwide<br />
+        Follow us @alee.autos
+      </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', function () {
-                const faqItem = this.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-    </script>
-
-</body>
+  </body>
 </html>
